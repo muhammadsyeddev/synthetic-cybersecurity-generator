@@ -217,3 +217,50 @@ Document Portal server as its network source, not ATK-001.
 
 This section clarifies the exfiltration step described
 earlier in the incident timeline.
+
+## 10. Event Correlation Rules
+
+### Export Operation
+
+Export ID: EXP-001
+
+The attacker initiates an export request using
+session SES-002.
+
+The Document Portal processes this request and
+performs the outbound HTTP transfer.
+
+Both events share the correlation identifier EXP-001.
+
+### Correlation Rules
+
+1. Every event has a unique metadata.uid.
+
+2. The attacker's authenticated requests reference
+   session SES-002 when supported by the event class.
+
+3. The export request and outbound HTTP transfer
+   share metadata.correlation_uid = EXP-001.
+
+4. The outbound transfer identifies the Document
+   Portal server as its source endpoint.
+
+5. The outbound transfer must occur after the
+   corresponding export request.
+
+6. The export request and transfer must reference
+   the same exported documents.
+
+7. Ground truth associates both events with
+   incident INC-001.
+
+### Important Distinction
+
+EXP-001 identifies an export operation.
+
+INC-001 identifies the security incident.
+
+SES-002 identifies an authenticated session.
+
+These identifiers represent different relationships
+and must not be used interchangeably.
