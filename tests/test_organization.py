@@ -200,3 +200,6 @@ print("Session validation passed!")
 
 org.validate_documents()
 print("Document validation passed!")
+
+org.validate()
+print("Entire organization validated successfully!")

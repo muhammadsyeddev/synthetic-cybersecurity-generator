@@ -83,3 +83,11 @@ class Organization:
                     f"Document {document.uid} references "
                     f"unknown application {document.application_uid}"
                 )
+    
+
+    def validate(self) -> None:
+        """Validate all relationships within the organization."""
+
+        self.validate_employee_devices()
+        self.validate_sessions()
+        self.validate_documents()
