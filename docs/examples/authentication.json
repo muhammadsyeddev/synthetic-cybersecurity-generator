@@ -1,0 +1,32 @@
+
+{
+  "metadata": {
+    "version": "1.9.0",
+    "uid": "EVENT-0001",
+    "product": {
+      "name": "Asterix Identity Provider",
+      "vendor_name": "Asterix Financial Services"
+    }
+  },
+  "time": 1789726500000,
+  "category_uid": 3,
+  "class_uid": 3002,
+  "activity_id": 1,
+  "type_uid": 300201,
+  "severity_id": 1,
+  "status_id": 1,
+  "status": "Success",
+  "user": {
+    "uid": "USR-007"
+  },
+  "src_endpoint": {
+    "uid": "ATK-001"
+  },
+  "session": {
+    "uid": "SES-002"
+  },
+  "service": {
+    "name": "Asterix Identity Provider"
+  },
+  "message": "Successful authentication for USR-007 from ATK-001."
+}
