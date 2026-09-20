@@ -1,0 +1,9 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "synthetic-cybersecurity-generator"
+version = "0.1.0"
+description = "A synthetic cybersecurity event generator using OCSF 1.9"
+requires-python = ">=3.12"

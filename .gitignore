@@ -36,6 +36,7 @@ venv.bak/
 
 # Environment Variables and Secrets
 .env
+.env.*
 .env.local
 .env.*.local
 *.env
