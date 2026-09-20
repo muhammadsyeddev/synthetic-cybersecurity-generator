@@ -70,11 +70,20 @@ INC-001
 
 4. 10:22 - Sensitive Document Download
    The attacker downloads confidential financial reports
-   from the document portal.
+   from the Document Portal using session SES-002.
 
-5. 10:30 - Data Exfiltration
-   The attacker transfers the downloaded documents to
-   an external destination.
+5. 10:26 - External Export Request
+   The attacker requests a server-side export of the
+   same financial reports to a fictional external
+   destination using session SES-002.
+
+6. 10:30 - Data Exfiltration
+   The Document Portal processes the export request
+   and transfers the financial reports to the
+   external destination.
+
+   The outbound HTTP event identifies the Document
+   Portal server as its source, not ATK-001.
 
 ### Assumptions
 
@@ -167,3 +176,44 @@ sequence while also generating realistic normal business activity.
 We intentionally limit the prototype to three event classes
 to keep the implementation focused and achievable within
 the assessment's two-day deadline.
+
+## 9. Incident Observability
+
+### Document Portal Export Capability
+
+The fictional Document Portal supports exporting documents
+to an external destination.
+
+The attacker uses the compromised employee account to
+initiate an external export of sensitive financial reports.
+
+The Document Portal performs the outbound HTTP transfer.
+
+### Observable Events
+
+1. Attacker authenticates using USR-007.
+2. Attacker accesses the Document Portal.
+3. Attacker downloads sensitive financial reports.
+4. Attacker initiates an external export request.
+5. The Document Portal transfers the documents externally.
+
+### Monitoring Assumptions
+
+- The Identity Provider records authentication events.
+- The Document Portal records document operations.
+- The Document Portal's server-side HTTP activity is logged.
+- The outbound transfer is visible to the organization's
+  security monitoring system.
+- The export request and outbound transfer can be
+  correlated through shared identifiers.
+
+### Important Distinction
+
+ATK-001 initiates the export, but the Document Portal
+performs the outbound transfer.
+
+The outbound HTTP event therefore identifies the
+Document Portal server as its network source, not ATK-001.
+
+This section clarifies the exfiltration step described
+earlier in the incident timeline.
