@@ -14,8 +14,20 @@ class TestOrganizationGenerator(unittest.TestCase):
         self.assertEqual(len(org.employees), 15)
         self.assertEqual(len(org.devices), 16)
         self.assertEqual(len(org.applications), 3)
-        self.assertEqual(len(org.documents), 1)
+        self.assertEqual(len(org.documents), 6)
         self.assertEqual(len(org.sessions), 2)
+
+                # Verify our confidential documents exist.
+        confidential_documents = {
+            document.uid
+            for document in org.documents.values()
+            if document.sensitivity == "confidential"
+        }
+
+        self.assertEqual(
+            confidential_documents,
+            {"DOC-001", "DOC-003", "DOC-005"},
+        )
 
         # Verify the compromised employee account.
         alice = org.employees["USR-007"]
