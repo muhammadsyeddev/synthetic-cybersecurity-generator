@@ -88,18 +88,52 @@ def generate_organization() -> Organization:
     for application in applications:
         org.applications[application.uid] = application
 
+
     # --------------------------------------------------
-    # 3. Register a financial document
+    # 3. Register company documents
     # --------------------------------------------------
 
-    document = Document(
-        uid="DOC-001",
-        name="financial_report.pdf",
-        sensitivity="confidential",
-        application_uid="APP-002",
-    )
+    documents = [
+        Document(
+            uid="DOC-001",
+            name="financial_report.pdf",
+            sensitivity="confidential",
+            application_uid="APP-002",
+        ),
+        Document(
+            uid="DOC-002",
+            name="employee_handbook.pdf",
+            sensitivity="internal",
+            application_uid="APP-002",
+        ),
+        Document(
+            uid="DOC-003",
+            name="quarterly_revenue.xlsx",
+            sensitivity="confidential",
+            application_uid="APP-002",
+        ),
+        Document(
+            uid="DOC-004",
+            name="meeting_notes.docx",
+            sensitivity="internal",
+            application_uid="APP-002",
+        ),
+        Document(
+            uid="DOC-005",
+            name="customer_records.csv",
+            sensitivity="confidential",
+            application_uid="APP-002",
+        ),
+        Document(
+            uid="DOC-006",
+            name="company_policy.pdf",
+            sensitivity="internal",
+            application_uid="APP-002",
+        ),
+    ]
 
-    org.documents[document.uid] = document
+    for document in documents:
+        org.documents[document.uid] = document
 
     # --------------------------------------------------
     # 4. Register Alice's legitimate session
