@@ -15,7 +15,7 @@ class TestOrganizationGenerator(unittest.TestCase):
         self.assertEqual(len(org.devices), 16)
         self.assertEqual(len(org.applications), 3)
         self.assertEqual(len(org.documents), 6)
-        self.assertEqual(len(org.sessions), 2)
+        self.assertEqual(len(org.sessions), 16)
 
                 # Verify our confidential documents exist.
         confidential_documents = {

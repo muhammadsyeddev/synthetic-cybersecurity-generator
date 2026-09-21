@@ -170,6 +170,28 @@ def generate_organization() -> Organization:
     )
 
     org.sessions[attacker_session.uid] = attacker_session
+
+
+    # Generate legitimate sessions for the remaining employees.
+    session_number = 3
+
+    for employee in org.employees.values():
+
+        # Alice already has SES-001.
+        if employee.uid == "USR-007":
+            continue
+
+        session = Session(
+            uid=f"SES-{session_number:03d}",
+            user_uid=employee.uid,
+            device_uid=employee.device_uid,
+            application_uid="APP-001",
+        )
+
+        org.sessions[session.uid] = session
+
+        session_number += 1
+        
     org.validate()
 
     return org
